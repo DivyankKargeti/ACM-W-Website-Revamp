@@ -31,8 +31,257 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css">
+    <script src="https://kit.fontawesome.com/522aed4c91.js" crossorigin="anonymous"></script>
+    <style>
+  #chat,
+  #chat:after,
+  .chatbox {
+    transition: all 0.4s ease-in-out;
+  }
+
+  #chat,
+  #close-chat,
+  .minim-button,
+  .maxi-button,
+  .chat-text {
+    font-weight: 700;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  #chat,
+  #close-chat,
+  .chatbox {
+    border: 1px solid #a8a8a8;
+  }
+
+  #chat:after,
+  #chat:before {
+    position: absolute;
+    border-style: solid;
+    content: "";
+  }
+
+  .chatbox {
+    position: fixed;
+    bottom: 0px;
+    right: 5px;
+    margin: 0 0 -2500px;
+    background: #fff;
+    border-bottom: none;
+    padding: 28px 10px 10px;
+    z-index: 100000;
+
+  }
+
+  #close-chat {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 24px;
+    border: 1px solid #dedede;
+    width: 20px;
+    background: red;
+    z-index: 2;
+  }
+
+  #minim-chat,
+  #maxi-chat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .minim-button {
+    position: absolute;
+    top: 2px;
+    right: 26px;
+    font-size: 24px;
+    border: 1px solid #dedede;
+    width: 20px;
+    background: #fefefe;
+  }
+
+  .maxi-button {
+    position: absolute;
+    top: 2px;
+    right: 26px;
+    font-size: 24px;
+    border: 1px solid #dedede;
+    width: 20px;
+    background: #fefefe;
+  }
+
+  .chat-text {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 16px;
+  }
+
+  #chat {
+    width: 40px;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 12px;
+    background: #fff;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    top: -10px;
+  }
+
+  #chat:before {
+    border-width: 10px 11px 0 0;
+    border-color: #a8a8a8 transparent transparent;
+    left: 7px;
+
+  }
+
+  #chat:after {
+    border-width: 9px 8px 0 0;
+    border-color: #fff transparent transparent;
+    left: 8px;
+
+  }
+  }
+
+  @-webkit-keyframes tada {
+    0% {
+      -webkit-transform: scale(1);
+    }
+
+    10%,
+    20% {
+      -webkit-transform: scale(0.9)rotate(-3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: scale(1.1)rotate(3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+      -webkit-transform: scale(1.1)rotate(-3deg);
+    }
+
+    100% {
+      -webkit-transform: scale(1)rotate(0);
+    }
+  }
+
+  @keyframes tada {
+    0% {
+      transform: scale(1);
+    }
+
+    10%,
+    20% {
+      transform: scale(0.9)rotate(-3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: scale(1.1)rotate(3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+      transform: scale(1.1)rotate(-3deg);
+    }
+
+    100% {
+      transform: scale(1)rotate(0);
+    }
+  }
+
+  .tada {
+    -webkit-animation-name: tada;
+    animation-name: tada;
+  }
+
+  @-webkit-keyframes hvr-pulse-grow {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes hvr-pulse-grow {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+
+  #aaa {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media only screen and (min-width : 1224px) {
+    #chatt {
+      width: 60vh;
+      height: 80vh;
+    }
+  }
+
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #chatt {
+      width: 40vh;
+      height: 70vh;
+    }
+  }
+
+  #btn {
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 15px;
+    /* Place the button at the bottom of the page */
+    right: 25px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color:rgba(3,71,95,0.5);
+    /* Set a background color */
+    color: white;
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 50%;
+    /* Rounded corners */
+    height: 70px;
+    width: 70px;
+    font-size: 2.5vh;
+    /* Increase font size */
+
+  }
+</style>
     
   </head>
+  
+
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   
   <div class="site-wrap">
@@ -49,10 +298,9 @@
     
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
       
-      <div class="container-fluid">
+      <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo"><a class="navbar-brand" href="index.html"> <img style="width:70px;display:block;" src="images/ACMW.png" alt="logo"> </a></div>
-		  
           <div>
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -60,7 +308,7 @@
                 <li><a href="#about-section" class="nav-link">About</a></li>
                 <li><a href="#initiatives-section" class="nav-link">Initiatives</a></li>
                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
-		<li><a href="http://csr.upesacm.org/" class="nav-link" target="_blank">CSR</a></li>
+		<li><a href="http://upesacm.org/csr" class="nav-link" target="_blank">CSR</a></li>
 		<li><a href="team.html" class="nav-link" target="_blank">Team</a></li>
 		<li><a href="http://blogflix.upesacm.org/" class="nav-link" target="_blank">Blog</a></li>
               </ul>
@@ -69,7 +317,7 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block">
-                <li class="cta"><a href="http://membership.upesacm.org/" class="nav-link"><span class="bor">Membership</span></a></li>
+                <li class="cta"><a href="https://acm-register-v2.herokuapp.com/" class="nav-link"><span class="bor">Membership</span></a></li>
               </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -78,14 +326,58 @@
       </div>
       
     </header>
+    
+    <button style="" id="btn" class="animated-chat tada" onclick="loadChatbox()"><i class="fas fa-comment-dots fa-2x"></i></button>
+  <div class="chatbox" id="chatbox">
+    <span class="chat-text">UPES ACM-W</span>
+    <script>
+      //<![CDATA[
+      document.write('<div  style=" overflow: hidden; margin: auto; padding: 0;">');
+      document.write('<div id="chatt" style=" overflow: hidden; margin: auto; padding: 0; border:0; ">');
+      document.write('<iframe  id="aaa" allow="microphone" src="https://console.dialogflow.com/api-client/demo/embedded/bbabf463-56fc-44ba-b29a-cc75660f320f" scrolling="no" frameborder="0"  style="border:0; margin:0; padding: 0;" allowfullscreen>');
+      document.write('</iframe></div></div>');
+      //]]>
+    </script>
+    <div id="close-chat" onclick="closeChatbox()">&times;</div>
+    <div id="minim-chat" onclick=""></div>
+    <div id="maxi-chat" onclick="loadChatbox()"><span class="maxi-button">&plus;</span></div>
+  </div>
+
+  <script>
+    //<![CDATA[
+    function loadChatbox() {
+      var e = document.getElementById("minim-chat");
+      e.style.display = "block";
+      var e = document.getElementById("maxi-chat");
+      e.style.display = "none";
+      var e = document.getElementById("chatbox");
+      e.style.margin = "0";
+    }
+
+    function closeChatbox() {
+      var e = document.getElementById("chatbox");
+      e.style.margin = "0 0 -1500px 0";
+    }
+
+    function minimChatbox() {
+      var e = document.getElementById("minim-chat");
+      e.style.display = "none";
+      var e = document.getElementById("maxi-chat");
+      e.style.display = "block";
+      var e = document.getElementById("chatbox");
+      e.style.margin = "0 0 -51vh 0";
+    }
+    //]]>
+  </script>
+
 
     <div class="intro-section" id="home-section">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-4 mr-auto" data-aos="fade-up">
             <h1>WELCOME TO UPES ACM-W!</h1>
-            <p class="mb-5" align="justify">Creating learning and leadership opportunities in the field of computing and information technology for women.</p>
-            <p><a href="http://prodigy.upesacm.org/" class="btn btn-outline-light py-3 px-5">PRODIGY' 19</a></p>
+            <p class="mb-5" align="auto">Creating learning & leadership opportunities in the field of computing & information technology for women.</p>
+            <p><a href="http://upesacm.org/" target="_blank" class="btn btn-outline-light py-3 px-5">UPES ACM</a></p>
 
           </div>
           <div class="col-lg-2 ml-auto"  data-aos="fade-up" data-aos-delay="100">
@@ -123,7 +415,7 @@
               <div class="box" data-aos="fade-up">
                 <div class="icon-wrap"><span> <img src="images/monitor.svg" width="40px"></span></div>
                 <h3>Largest Computing Society, now at UPES</h3>
-                <p align="justify">ACM-W believes that putting women's vision into effect would give way to a brighter future.</p>
+                <p align="left">ACM-W believes that putting women's vision into effect would give way to a brighter future.</p>
               </div>
               <img src="images/about_1.jpg" alt="Image" class="img-fluid">
             </div>
@@ -138,7 +430,7 @@
                     <div class="single_service_part">
                         <div class="single_service_part_iner">
 			    <img src="images/balloon.svg" width="40px">
-			    <h1><span class="counter" style="color: #fff">2010</span></h1>
+			    <h1><span class="counter" style="color: #fff">2015</span></h1>
                             <p style="color: #fff" >YEAR OF ESTABLISHMENT</p>
                         </div>
                     </div>
@@ -147,7 +439,7 @@
                     <div class="single_service_part">
                         <div class="single_service_part_iner">
                             <i class="fa fa-trophy fa-2x" style="color: #fff"></i>
-                            <h1><span class="counter" style="color: #fff">04</span></h1>
+                            <h1><span class="counter" style="color: #fff">01</span></h1>
                             <p style="color: #fff">AWARDS WON</p>
                         </div>
                     </div>
@@ -177,8 +469,119 @@
     </section>
 	    	
         </div>
+
+               <!--gallery-->
+    <div class="site-section section-2" id="work-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <h2 class="section-title">Gallery</h2>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="owl-carousel nonloop-block-13">
+
+            <a class="work-thumb" href="images/galleryweb/1.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> CSR</h3>
+              <span><h3><u>Location:</u> Delhi</h3></span>
+            </div>
+            <img src="images/galleryweb/1.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/2.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/2.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/3.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/3.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/4.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/4.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/5.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/5.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/6.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/6.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/7.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/7.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/8.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/8.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/9.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/9.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/10.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/10.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/11.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19 Opening</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/11.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a class="work-thumb" href="images/galleryweb/12.jpg"  data-fancybox="gallery">
+            <div class="work-text">
+              <h3><u>Event:</u> Prodigy'19 Closing</h3>
+              <span><h3><u>Location:</u> UPES, Dehradun</h3></span>
+            </div>
+            <img src="images/galleryweb/12.jpg" alt="Image" class="img-fluid">
+          </a>
+      </div>
      </div>
   </div>
+
 	
 	
 <!--================ Start ACHIEVEMENTS Area =================-->
@@ -204,71 +607,124 @@
       </div>
     </section>
 	  
-  <!--================ End ACHIEVEMENTS Area =================-->	  
-
-    <div class="site-section section-2" id="work-section">
+  <!--================ End ACHIEVEMENTS Area =================-->
+  <br><br><br>	
+  <section style="max-height:350px">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5">
-            <span class="section-sub-title d-block">Our Team</span>
-            <h2 class="section-title">Our Executives</h2>
-            <p align="justify">ACM gives everyone an opportunity to discover their talents hidden within them. The executives coordinate with the team guiding them on each step to make it to the peak.</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="section-sub-title">
+              <h2 class="mb-4"><span class="d-block" style="color: #1b2b5a;text-align:center;font-weight:900;">Our Executives</span></h2>
+              <p>
+                
+              </p>
+            </div>
           </div>
         </div>
-
-      </div>
-      
-      <div class="owl-carousel nonloop-block-13">
-
-	   <a class="work-thumb" href="images/Rashmi_Sharma.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Rashmi Sharma</h3>
-              <span class="category" style="color:white;">Faculty Coordinator</span>
-            </div>
-            <img src="images/Rashmi_Sharma.jpg" alt="Image" class="img-fluid">
-          </a>
-	  <a class="work-thumb" href="images/Nakul.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Nakul Chawla</h3>
-              <span class="category" style="color:white;">Chairperson</span>
-            </div>
-            <img src="images/Nakul.jpg" alt="Image" class="img-fluid">
-          </a>
-          <a class="work-thumb" href="images/Durva_Tiwari_Vice-Chairperson.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Durva Tiwari</h3>
-              <span class="category" style="color:white;">Vice Chairperson</span>
-            </div>
-            <img src="images/Durva_Tiwari_Vice-Chairperson.jpg" alt="Image" class="img-fluid">
-          </a>
-
-          <a class="work-thumb" href="images/Janhvi_Joshi_Secretary.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Janhvi Joshi</h3>
-              <span class="category" style="color:white;">Secretary</span>
-            </div>
-            <img src="images/Janhvi_Joshi_Secretary.jpg" alt="Image" class="img-fluid">
-          </a>
-	      
-	  <a class="work-thumb" href="images/Office Bearers ACMW/Tushar_Rana.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Tushar Rana</h3>
-              <span class="category" style="color:white;">Joint-Secretary</span>
-            </div>
-            <img src="images/Office Bearers ACMW/Tushar_Rana.jpg" alt="Image" class="img-fluid">
-          </a>
-
-          <a class="work-thumb" href="images/Aryaman_Tyagi_Treasurer.jpg"  data-fancybox="gallery">
-            <div class="work-text">
-              <h3>Aryaman Tyagi</h3>
-              <span class="category" style="color:white;">Treasurer</span>
-            </div>
-            <img src="images/Aryaman_Tyagi_Treasurer.jpg" alt="Image" class="img-fluid">
-          </a>
-      </div>
-
-    </div>
-
+	  </div>
+    </section>
+		<br>
+        
+    <!--office_bearers counter start -->
+	<section class="team_member_section section_padding">
+		<div class="container"> 
+			<div class="row">
+					
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Rashmi Sharma.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#"  style="color: #1b2b5a">Rashmi Sharma</a></h4>
+									<p style="color: #1b2b5a;">Faculty Coordinator, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/dr-rashmi-sharma-571b7051" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://www.facebook.com/rashmi.pancholi.58" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Nakul.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#" style="color: #1b2b5a">Nakul Chawla</a></h4>
+									<p style="color: #1b2b5a;">Chairperson, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/nakul--chawla" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://www.facebook.com/nakul.chawla.50" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Durva_Tiwari.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#" style="color: #1b2b5a">Durva Tiwari</a></h4>
+									<p style="color: #1b2b5a;">Vice Chairperson, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/duxva/" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://www.facebook.com/duxva/" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/duxva/" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>
+					
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Aryaman_Tyagi.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#" style="color: #1b2b5a">Aryaman Tyagi</a></h4>
+									<p style="color: #1b2b5a;">Treasurer, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/aryaman-tyagi-4b4a8016a" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://www.facebook.com/aryaman.tyagi.39" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/luv_ya_3000/?hl=en" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Janhvi_Joshi.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#" style="color: #1b2b5a">Janhvi Joshi</a></h4>
+									<p style="color: #1b2b5a;">Secretary, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/janhvi-joshi-13678514b" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://m.facebook.com/azycray05" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/janhvijoshii/" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6">
+						<div class="single_team_member">
+							<img src="images/Office Bearers ACMW/Tushar_Rana.jpg" height="300px" alt="">
+								<div class="single_team_text">
+									<h4><a href="#" style="color: #1b2b5a">Tushar Rana</a></h4>
+									<p style="color: #1b2b5a;">Joint Secretary, ACM-W</p>
+									<div class="social_icon">
+										<a href="https://www.linkedin.com/in/tusharr391334" style="color:#14d0bb;"> <i class="ti-linkedin"></i> </a>
+										<a href="https://www.facebook.com/tushar.rana.1334" style="color:#14d0bb;"> <i class="ti-facebook"></i> </a>
+										<a href="https://www.instagram.com/tushar_rana_39/" style="color:#14d0bb;"> <i class="ti-instagram"></i> </a>
+							
+									</div>
+								</div>
+						</div>
+					</div>	
+			</div>			
+		</div>
+	</section>    
+    <!-- office_bearers end -->
 
     <div class="site-section section-2" id="initiatives-section">
       <div class="container">
@@ -276,7 +732,7 @@
           <div class="col-lg-6 mb-5">
             <span class="section-sub-title d-block">Making a change</span>
             <h2 class="section-title">Initiatives</h2>
-            <p align="justify">UPES ACM is a student chapter created to address technical needs of the students pursuing computers in UPES. The chapter works toward broadening the horizons of the students related to their course, but apart from their coursework. To work towards this goal,the chapter organises various events including workshops and mentorship programs with people related to computers and well-verse with their areas of interest.</p>
+            <p align="left">UPES ACM-W is a student Chapter exclusively for women, created to address the technical skills of the students pursuing Computer Science in UPES. The Chapter works towards broadening the horizons of the students, help them explore and practice their technical interests, hence creating a platform apart from the standard course-work. To work towards this goal, the Chapter organizes various events including workshops and mentorship programs with people who are related to computers and well-versed with their areas of interest.</p>
           </div>
         </div>
         <div class="row">
@@ -286,7 +742,7 @@
               <div>
                 <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/copyright.svg" width="40px"></span>
                 <h3>SPY-C</h3>
-                <p align="justify">A way for students to learn C and interact with their seniors. UPES ACM devised this initiative to help introduce students to programming languages and their delights. Spy C melds the rules of code with the imagination of humans.</p>
+                <p align="left">UPES ACM-W devised this initiative to help students get acquainted to programming languages. It is a platform through which students can interact with their seniors as they get a hang of coding, along the way.  Spy C is a perfect blend of coding algorithms, logic and human insights.</p>
               </div>
 
             </div>
@@ -297,7 +753,7 @@
               <div>
                 <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/multiple-users-silhouette.svg" width="40px"></span>
                 <h3>WORKSHOPS</h3>
-                <p align="justify">Recognising the importance of nurturing the various interests of our members, UPES-ACM and ACM-W hosts interactive technical workshops that helps foster innovation and sharpen skills. We at UPES ACM and ACM W, think of ways to make the world a better place by being the change we want to see.</p>
+                <p align="left">Recognizing the importance of nurturing the various fields that intrigue our members, UPES-ACM and ACM-W host interactive technical workshops that help spread awareness, foster ingenuity and sharpen skills. We at UPES ACM and ACM-W, believe in growing holistically and being the change that we want to see in the world.</p>
               </div>
 
             </div>
@@ -308,14 +764,56 @@
               <div>
                 <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/laptop.svg" width="40px"></span>
                 <h3>CODE ANYTIME</h3>
-                <p align="justify">Code anytime, an initiative augmented by UPES ACM and ACM-W in an effort to develop a coding culture within campus. An environment where everyone is provided with the opportunity to code, learn and grow.</p>
+                <p align="left">Code Anytime is an initiative augmented by UPES ACM and ACM-W in an effort to kindle a coding culture within campus. It creates an environment where everyone is provided with a platform having a diverse pool of languages, to code, learn and grow. </p>
               </div>
 
             </div>
           </div>
         </div>
       </div>
+
+    <!--Online CSR-->
+    <div class="site-section section-2" id="work-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <h2 class="section-title">Online CSR</h2>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="owl-carousel nonloop-block-13">
+
+            <a href="images/onlinecsr/dk1.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk1.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a href="images/onlinecsr/dk2.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk2.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a href="images/onlinecsr/dk3.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk3.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a href="images/onlinecsr/dk4.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk4.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a href="images/onlinecsr/dk5.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk5.jpg" alt="Image" class="img-fluid">
+          </a>
+
+          <a href="images/onlinecsr/dk6.jpg"  data-fancybox="gallery">
+            <img src="images/onlinecsr/dk6.jpg" alt="Image" class="img-fluid">
+          </a>
+
+      </div>
+     </div>
     </div>
+
+
 
 
     <div class="site-section bg-light" id="team-section">
@@ -324,7 +822,7 @@
           <div class="col-lg-6 mb-5">
             <span class="section-sub-title d-block">Our Committees</span>
             <h2 class="section-title">Our Committees</h2>
-            <p align="justify">ACM has evolved into a bigger family by the efforts of its Committees who've put their best foot forword and worked dedicatedly over their tasks. Working and guiding a brilliant team to become the leaders of tomorrow, ACM has shown its effortless prodigy with excessive hardwork and excellence.</p>
+            <p align="justify">ACM-W has evolved into a diverse family by the sincere efforts of its members in various Committees, who have put their best foot forward and shown utmost diligence in their respective forte. Working with passion, and guiding a brilliant team to become the leaders of tomorrow, ACM-W has shown its effortless prodigy with excessive hard work and excellence, constantly striving for the pinnacle of success.</p>
           </div>
         </div>
 
@@ -336,7 +834,8 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/sketch.svg"></span>
             <h3>Editorial</h3>
-            <p align="justify">In addition to being the brainchild behind the Chapter's formal communications and blogs,  the Editorial Team is also responsible for documenting the Chapter's daily proceedings.</p>
+            <p align="left">In addition to being the brainchild behind the Chapter's formal communications and blogs, the Editorial Team is also responsible for documenting the Chapter's daily proceedings.
+.</p>
           </div>
         </div>
 
@@ -345,7 +844,7 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/public-relation.svg"></span>
             <h3 class="colo">PR, Membership &  Sponsorship</h3>
-            <p align="justify">From getting sponsorship for events to setting up the membership drive,  and publicising events,  workshops and other activities of the Chapter,  this team does it all.</p>
+            <p align="left">From getting sponsorship for events to setting up the membership drive,  and publicising events,  workshops and other activities of the Chapter,  this team does it all.</p>
           </div>
         </div>
 
@@ -353,7 +852,7 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/class.svg"></span>
             <h3>Events and Workshops</h3>
-            <p align="justify">Managing events and workshops egaging over a hundred students is no easy task. This team makes such hardships seem like a walk in the park.</p>
+            <p align="left">Managing events and workshops egaging over a hundred students is no easy task. This team makes such hardships seem like a walk in the park.</p>
           </div>
         </div>
 
@@ -361,7 +860,7 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/project-management.svg"></span>
             <h3>Technical</h3>
-            <p align="justify">The Chapter's backbone,  the Techncial Team not only designs the websites and apps for the Chapter,  but also propogates the culture of coding across entire UPES.</p>
+            <p align="left">The Chapter's backbone,  the Techncial Team not only designs the websites and apps for the Chapter,  but also propogates the culture of coding across entire UPES.</p>
           </div>
         </div>
 	        
@@ -371,7 +870,7 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/csr1.svg"></span>
             <h3>Corporate Social Responsibility</h3>
-            <p align="justify">The CSR team puts their words to action, and brings smiles across the faces of the underprivileged society. The team parts education in the most exciting manner and makes the activities as interactive and intriguing as possible.</p>
+            <p align="left">The CSR team puts their words to action, and brings smiles across the faces of the underprivileged society.</p>
           </div>
         </div>
 
@@ -379,7 +878,7 @@
           <div>
             <span class="display-4 text-primary mb-4 d-inline-block"><img src="images/vector.svg"></span>
             <h3>Design and VFX</h3>
-            <p align="justify">Graphics are one of the most important aspects to any Chapter activity. The desingning and VFX team handles the enteir graphics designing.</p>
+            <p align="left">Graphics are one of the most important aspects to any Chapter activity. The desingning and VFX team handles the enteir graphics designing.</p>
           </div>
         </div>
 
@@ -387,6 +886,24 @@
       </div>
 
     </div>
+
+    <div class="site-section bg-light" id="team-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-5">
+            <h2 class="section-title">EXCLUSIVELY BY ACM-W</h2>
+            <p align="justify">UPES ACM-W organized the Regional Conference 18’ on 13th and 14th of April 2018. The conference aims at providing a platform and a pool of opportunities to help women sharpen their skills and excel in the field of computing. It consisted of 4 enticing events, which were flagged off by Mrs Rashmi Mohan, Secretary, ACM India.</p>
+            <p>
+            	<li><strong><span style="color:#1B2B5A;font-size:21px">SUPERWOMAN 2.0 :</span></strong> Containing the name of a famous female personality, Superwoman 2.0 was an amalgamation of a quiz and a platform that assessed the participants’ general knowledge and coding skills.</li>
+            	<li><strong><span style="color:#1B2B5A;font-size:21px">DUNK-A-LOT :</span></strong> An appealing outdoor tournament blended with a technical quiz, for the passionate basketball enthusiasts out there.</li>
+            	<li><strong><span style="color:#1B2B5A;font-size:21px">TECH-XHIBITION :</span></strong> A two-day workshop in which the participants worked on remarkable projects, conducted in collaboration with the Google Developer Student Club, Intel and Microsoft Technical Society at the University. </li>
+            	<li><strong><span style="color:#1B2B5A;font-size:21px">EMINENT SPEAKER PROGRAM :</span></strong> The Eminent Speaker Program was presided over by Mrs Rashmi Mohan, ACM India Council Secretary, a successful technologist and an exceptional mentor. She captivated the audience with a sensational speech on experiences, hence motivating the students on how to test their limits and broaden their horizon.</li>
+            	
+          </p>
+          </div>
+        </div>
+
+      </div>
 
 
     <div class="site-section" id="contact-section">
@@ -396,44 +913,45 @@
           <div class="col-md-7">
 
 
+
+
             
             <h2 class="section-title mb-3">Get In Touch</h2><p><br></p>
             <!-- <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p> -->
           
-            <form method="post" data-aos="fade">
+            <form action="mailer.php" method="post" data-aos="fade">
               <div class="form-group row">
                 <div class="col-md-6 mb-3 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input type="text" class="form-control" name="fname" placeholder="First name" pattern="[A-Za-z]{5,40}" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Last name">
+                  <input type="text" class="form-control" name="" placeholder="Last name" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Subject">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="email" class="form-control" placeholder="Email">
+                  <input type="email" class="form-control" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@(gmail|ymail|yahoo|hotmail|outlook|googlemail|mac)+\.(com|co.in|in|org|net)$" required>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
+                  <textarea class="form-control" name="message" cols="30" rows="10" name="" placeholder="Write your message here." pattern="[a-z0-9.-$%+-*@#^]{20,}" required></textarea>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
                   
-                  <input type="submit" class="btn btn-primary py-3 px-5 btn-block" style="background-color: #14d0bb; border-color: #14d0bb" value="Send Message">
+                  <input type="submit" name="submit" class="btn btn-primary py-3 px-5 btn-block" style="background-color: #14d0bb; border-color: #14d0bb" value="Send Message">
                 </div>
               </div>
-
             </form>
           </div>
         </div>
@@ -446,7 +964,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <a href="#"> <img src="images/acmwlogo.png" style="height:200px" alt="UPES-ACM W"> </a>
+            <a href="#"> <center><img class="img-responsive" src="images/acmwlogo.png" style="height:150px" alt="UPES-ACM W"></center> </a>
           </div>
 
           <div class="col-md-3 ml-auto">
@@ -455,8 +973,7 @@
               <li><a style="color: #14d0bb" href="#home-section">Home</a></li>
               <li><a style="color: #14d0bb" href="#about-section">About</a></li>
               <li><a style="color: #14d0bb" href="#initiatives-section">Initiatives</a></li>
-              <li><a style="color: #14d0bb" href="#contact-section">Contact</a></li>
-	      <li><a style="color: #14d0bb" href="http://csr.upesacm.org/" target="_blank">CSR</a></li>
+	      <li><a style="color: #14d0bb" href="http://upesacm.org/csr" target="_blank">CSR</a></li>
               <li><a style="color: #14d0bb" href="team.html" target="_blank">Team</a></li>
               <li><a style="color: #14d0bb" href="http://blogflix.upesacm.org/" target="_blank">Blog</a></li>
             </ul>
